@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Voyage et Découverte</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            color: #222;
+            background-color: #f4f4f4;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 15px 30px;
+            background-color: #075e54;
+        }
+
+        nav a {
+            color: white;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        nav a:hover {
+            color: #ffcc00;
+        }
+
+        .search-form {
+            display: flex;
+            gap: 8px;
+            margin-left: auto;
+        }
+
+        input,
+        textarea {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 15px;
+        }
+
+        .search-form input {
+            width: 270px;
+        }
+
+        button {
+            padding: 10px 16px;
+            border: none;
+            border-radius: 5px;
+            background-color: #ffcc00;
+            color: #222;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #e6b800;
+        }
+
+        .reset-button {
+            background-color: #dddddd;
+        }
+
+        .reset-button:hover {
+            background-color: #bbbbbb;
+        }
+
+        section {
+            padding: 40px;
+        }
+
+        #home {
+            min-height: 600px;
+            color: white;
+            background-image:
+                linear-gradient(
+                    rgba(0, 0, 0, 0.5),
+                    rgba(0, 0, 0, 0.5)
+                ),
+                url("images/travel-background.jpg");
+            background-position: center;
+            background-size: cover;
+        }
+
+        #home h1 {
+            max-width: 700px;
+            margin-top: 120px;
+            font-size: 52px;
+        }
+
+        #home p {
+            max-width: 650px;
+            font-size: 20px;
+            line-height: 1.6;
+        }
+
+        .content-section {
+            margin-top: 20px;
+            background-color: white;
+        }
+
+        .content-section h2,
+        #results h2 {
+            color: #075e54;
+        }
+
+        #results {
+            min-height: 200px;
+            background-color: #eeeeee;
+        }
+
+        #recommendationResults {
+            display: grid;
+            grid-template-columns: repeat(
+                auto-fit,
+                minmax(250px, 1fr)
+            );
+            gap: 24px;
+        }
+
+        .recommendation-card {
+            overflow: hidden;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .recommendation-card img {
+            display: block;
+            width: 100%;
+            height: 190px;
+            object-fit: cover;
+        }
+
+        .recommendation-card-content {
+            padding: 18px;
+        }
+
+        .recommendation-card h3 {
+            margin-top: 0;
+            color: #075e54;
+        }
+
+        .team {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .team-member {
+            flex: 1 1 220px;
+            padding: 20px;
+            background-color: #e7f3f1;
+            border-radius: 8px;
+        }
+
+        .team-member h3 {
+            margin-top: 0;
+            color: #075e54;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            max-width: 600px;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+        }
+
+        .contact-form button {
+            width: fit-content;
+        }
+
+        footer {
+            padding: 20px;
+            text-align: center;
+            color: white;
+            background-color: #075e54;
+        }
+
+        @media screen and (max-width: 800px) {
+            nav {
+                flex-wrap: wrap;
+            }
+
+            .search-form {
+                width: 100%;
+                margin-left: 0;
+            }
+
+            .search-form input {
+                flex: 1;
+                width: auto;
+            }
+
+            #home h1 {
+                margin-top: 70px;
+                font-size: 38px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Page d'accueil -->
+    <section id="home">
+        <nav>
+            <a href="#home">Accueil</a>
+            <a href="#about">À propos</a>
+            <a href="#contact">Contact</a>
+
+            <form id="searchForm" class="search-form">
+                <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="Plage, temple ou pays"
+                    aria-label="Recherche"
+                >
+
+                <button type="submit">Rechercher</button>
+
+                <button
+                    type="button"
+                    id="resetButton"
+                    class="reset-button"
+                >
+                    Réinitialiser
+                </button>
+            </form>
+        </nav>
+
+        <h1>Découvrez votre prochaine aventure</h1>
+
+        <p>
+            Bienvenue sur Voyage et Découverte, votre guide pour découvrir
+            de magnifiques plages, des temples historiques et des pays
+            fascinants à travers le monde.
+        </p>
+
+        <p>
+            Recherchez une destination et trouvez l'inspiration pour votre
+            prochain voyage.
+        </p>
+    </section>
+
+    <!-- Résultats de recherche -->
+    <section id="results">
+        <h2>Recommandations de voyage</h2>
+
+        <div id="recommendationResults">
+            <p>
+                Recherchez une plage, un temple ou un pays pour afficher
+                les recommandations.
+            </p>
+        </div>
+    </section>
+
+    <!-- Page À propos -->
+    <section id="about" class="content-section">
+        <nav>
+            <a href="#home">Accueil</a>
+            <a href="#about">À propos</a>
+            <a href="#contact">Contact</a>
+        </nav>
+
+        <h2>À propos de nous</h2>
+
+        <p>
+            Voyage et Découverte est un site créé pour aider les voyageurs
+            à découvrir de magnifiques endroits dans le monde.
+        </p>
+
+        <p>
+            Notre plateforme propose des recommandations de plages, de
+            temples et de pays afin de faciliter la préparation des voyages.
+        </p>
+
+        <h2>Notre équipe</h2>
+
+        <div class="team">
+            <div class="team-member">
+                <h3>Claire Martin</h3>
+                <p>Consultante en voyages</p>
+            </div>
+
+            <div class="team-member">
+                <h3>Thomas Bernard</h3>
+                <p>Spécialiste des destinations</p>
+            </div>
+
+            <div class="team-member">
+                <h3>Élodie Dubois</h3>
+                <p>Responsable de l’expérience client</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Page Contact -->
+    <section id="contact" class="content-section">
+        <nav>
+            <a href="#home">Accueil</a>
+            <a href="#about">À propos</a>
+            <a href="#contact">Contact</a>
+        </nav>
+
+        <h2>Contactez-nous</h2>
+
+        <p>
+            Vous avez une question ou une suggestion ? Envoyez-nous un message.
+        </p>
+
+        <form id="contactForm" class="contact-form">
+            <label for="name">Nom</label>
+
+            <input
+                type="text"
+                id="name"
+                name="name"
+                placeholder="Saisissez votre nom"
+                required
+            >
+
+            <label for="email">Adresse e-mail</label>
+
+            <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="Saisissez votre adresse e-mail"
+                required
+            >
+
+            <label for="message">Message</label>
+
+            <textarea
+                id="message"
+                name="message"
+                rows="6"
+                placeholder="Écrivez votre message"
+                required
+            ></textarea>
+
+            <button type="submit">Envoyer</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>© 2025 Voyage et Découverte</p>
+    </footer>
+
+    <script src="travel_recommendation.js"></script>
+</body>
+</html>
