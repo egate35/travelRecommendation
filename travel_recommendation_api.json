@@ -2,36 +2,36 @@
     "beaches": [
         {
             "name": "La plage de Bora-Bora",
-            "imageUrl": "images/beach-1.jpg",
+            "imageUrl": "images/beach-1.avif",
             "description": "Bora-Bora est célèbre pour ses eaux turquoise, son sable blanc et ses paysages tropicaux."
         },
         {
             "name": "La plage de Copacabana",
-            "imageUrl": "images/beach-2.jpg",
+            "imageUrl": "images/beach-2.avif",
             "description": "La plage de Copacabana est une destination animée connue pour son littoral et ses magnifiques paysages."
         }
     ],
     "temples": [
         {
             "name": "Angkor Vat",
-            "imageUrl": "images/temple-1.jpg",
+            "imageUrl": "images/temple-1.avif",
             "description": "Angkor Vat est un complexe historique et l'un des monuments les plus impressionnants du Cambodge."
         },
         {
             "name": "Le temple Kinkaku-ji",
-            "imageUrl": "images/temple-2.jpg",
+            "imageUrl": "images/temple-2.avif",
             "description": "Kinkaku-ji est un célèbre temple doré situé à Kyoto, au Japon."
         }
     ],
     "countries": [
         {
             "name": "L'Italie",
-            "imageUrl": "images/country-1.jpg",
+            "imageUrl": "images/country-1.avif",
             "description": "L'Italie propose des villes historiques, une cuisine célèbre, de magnifiques côtes et de nombreux monuments."
         },
         {
             "name": "Le Japon",
-            "imageUrl": "images/country-2.jpg",
+            "imageUrl": "images/country-2.avif",
             "description": "Le Japon associe traditions anciennes, villes modernes, temples magnifiques et paysages uniques."
         }
     ]
